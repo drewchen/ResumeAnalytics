@@ -6,4 +6,6 @@ This analysis entails determining how similar documents are to a target document
 
 The resumes come in pdf form.  Conversion to text is performed using the `pdftotext` utility.  Instructions for installation on OSX can be found [here](http://macappstore.org/pdftotext/).
 
+### Analysis
 
+An example analysis is shown in this [notebook](https://github.com/blakeboswell/nlp-resume/blob/master/newsgroup_test.ipynb)
