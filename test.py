@@ -3,7 +3,19 @@ from sklearn.datasets import fetch_20newsgroups
 
 
 '''
-    store comp.graphics jsonl file in target folder
+
+    the below is meant to represent the resume comparison scenario
+
+    here we create a target by writing the comp.graphics
+    newsgroup data from the train set to one line in the target jsonl file
+    we will use this data to 'train' the model
+
+    we then write newsgroup data from all categories to the candidate jsonl
+    file for comparison to the target data
+
+    if this approach works we would expect documents labeled comp.graphics
+    in the candidate data to have lower similarity scores
+
 '''
 
 
@@ -15,16 +27,16 @@ twenty_test = fetch_20newsgroups(subset='test',
 
 
 target_content = ''
-for item in twenty_train.target:
-    if twenty_train.target_names[item] == 'comp.graphics':
-        target_content += twenty_train.data[item]
+for i in range(len(twenty_train.data)):
+    if twenty_train.target_names[twenty_train.target[i]] == 'comp.graphics':
+        target_content += twenty_train.data[i]
 
 with open('test/target.jsonl', 'w') as tfile:
     json.dump({'name':'target', 'content': target_content}, tfile)
 
 with open('test/candidate.jsonl', 'w') as cfile:
-    for item in twenty_test.target:
-        json.dump({'name': twenty_test.target_names[item],
-                   'content': twenty_test.data[item]
+    for i in range(len(twenty_test.data)):
+        json.dump({'name': twenty_test.target_names[twenty_test.target[i]],
+                   'content': twenty_test.data[i]
                   }, cfile)
         cfile.write('\n')

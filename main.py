@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 '''
 '''
 
-if __name__ == '__main__':
+def similarity(target, candidate):
 
     pipe = Pipeline([
         ('bykey', KeySelect()),
@@ -18,8 +18,10 @@ if __name__ == '__main__':
         ('cosine', CosineSim())
     ])
 
-    with open('out.jsonl') as f:
-        data = [json.loads(line) for line in f]
-    d = pipe.fit(data, None)
+    return 1 - pipe.fit(target, None).predict(candidate)
 
-    print(d.predict(data))
+
+
+
+
+
