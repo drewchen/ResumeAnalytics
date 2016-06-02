@@ -4,6 +4,8 @@ This analysis entails determining how similar documents are to a target document
 
 ### Data Preparation
 
+Requirements: `python 3.7`, `scikit-learn`, `nltk.corpus`
+
 The resumes come in pdf form.  Conversion to text is performed using the `pdftotext` utility.  Instructions for installation on OSX can be found [here](http://macappstore.org/pdftotext/).
 
 ### Analysis
