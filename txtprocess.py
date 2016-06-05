@@ -28,6 +28,7 @@ def _strip_stops(content):
                      if x not in STOPS])
 
 
+
 class KeySelect(TransformerMixin):
     ''' select key from dictionary
     '''
