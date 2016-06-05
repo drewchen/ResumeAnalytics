@@ -7,6 +7,7 @@ Using Conda, Anaconda Python 3.5.1 :: Continuum Analytics, Inc. with requirement
 
 Create environment via:
 ``` bash
+# from project root
 conda env create
 ```
 
@@ -14,6 +15,6 @@ conda env create
 
 The resumes come in pdf form. Conversion to raw text is performed using the `pdftotext` utility.  Instructions for installation on OSX can be found [here](http://macappstore.org/pdftotext/).
 
-### Analysis
+### Test Analysis
 
 An example analysis is shown in this [notebook](https://github.com/blakeboswell/nlp-resume/blob/master/newsgroup_test.ipynb)
