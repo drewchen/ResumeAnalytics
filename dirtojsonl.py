@@ -19,7 +19,12 @@ def _docx_to_txt(path):
     """
     Take the path of a docx file as argument, return the text in unicode.
     """
-    document = zipfile.ZipFile(path)
+    try:
+        document = zipfile.ZipFile(path)
+    except BadZipFile as e:
+        print (path)
+        print (" is not a valid zip file")
+        raise e
     xml_content = document.read('word/document.xml')
     document.close()
     tree = XML(xml_content)
@@ -70,7 +75,7 @@ def _txt_to_jsonl(root_dir, outpath):
         for root, _, files in os.walk(root_dir):
             for f in files:
                 _, ext = os.path.splitext(f)
-                if ext == '.doc' or ext == '.docx':
+                if ext == '.docx':# or ext == '.doc':
                     json.dump({'name': f, 'content': _docx_to_txt(os.path.join(root, f))}, outf)
                     outf.write('\n')
 
